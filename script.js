@@ -6,10 +6,10 @@ const container = document.querySelector('.container');
 
 for (i = 0; i < columns; i++) {
     const column = document.createElement('div');
-    column.classList.add('column');
+    column.classList.add('column', `No${i+1}`);
     for(j = 0; j < rows; j++) {
         const row = document.createElement('div');
-        row.classList.add('row');
+        row.classList.add('row', `No${j+1}`);
         //row.textContent = i + "-" + j;
         //only set left border except for last column to prevent double borders
         if (i === 15) {
@@ -23,10 +23,13 @@ for (i = 0; i < columns; i++) {
         if (j === 15) {
             row.style.borderBottom = '1px solid black';
         }
-        
         column.appendChild(row);
      }
      container.appendChild(column);
-    
-
 }
+//Every square that is hovered over, changes color to red
+const square = document.querySelectorAll('.row');
+square.forEach(sqr => sqr.addEventListener('mouseover', (e) => {
+    //Für jedes div, ändere Background-Color
+    sqr.classList.add('hover');
+}));  
