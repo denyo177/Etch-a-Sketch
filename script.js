@@ -29,7 +29,10 @@ function buildGrid() {
     const square = document.querySelectorAll('.row');
     square.forEach(sqr => sqr.addEventListener('mouseover', (e) => {
         //Für jedes div, ändere Background-Color
-        sqr.classList.add('hover');
+        //sqr.classList.add('hover');
+        const randomColor = Math.floor(Math.random()*16777215).toString(16);
+        sqr.style.backgroundColor = "#" + randomColor;
+
     }));  
 }
 
