@@ -28,11 +28,14 @@ function buildGrid() {
     //Every square that is hovered over, changes color to red
     const square = document.querySelectorAll('.row');
     square.forEach(sqr => sqr.addEventListener('mouseover', (e) => {
-        //Für jedes div, ändere Background-Color
-        //sqr.classList.add('hover');
-        const randomColor = Math.floor(Math.random()*16777215).toString(16);
-        sqr.style.backgroundColor = "#" + randomColor;
-
+        
+        if (!sqr.style.backgroundColor) {
+            sqr.style.backgroundColor = "rgba(0, 0, 0, 0.1)";
+        } else {
+            // get alpha value out of color and increase by 10%
+            const a = parseFloat(sqr.style.backgroundColor.slice(14, 17)) + 0.1;
+            sqr.style.backgroundColor = `rgba(0, 0, 0, ${a})`;
+        }
     }));  
 }
 
